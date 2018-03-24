@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/test.js') }} "></script>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Home Assistant</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li>
+          <a href="{{ url_for('main') }}">Home</a>
+        </li>
+        <li>
+          <a href="#">Settings</a>
+        </li>
+        <li>
+          <a href=" {{ url_for('history') }}">History</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <!-- Page Content goes here -->
+    <div class="row">
+      <h5 class="align- center">
+        Here you can create and manage scenarios and action sets.
+      </h5>
+      <ul class="collection with-header">
+        <li class="collection-header">
+          <h4>Scenarios</h4>
+        </li>
+        {% if scenarios|length == 0 %}
+        <li class="collection-item">No scenarios present</li>
+        {% else %}
+            {% for scenario in scenarios %}
+                <li class="collection-item">
+                  <div> {{ scenario.description }}
+                    <a href="#!" class="secondary-content">
+                      <i class="material-icons">edit</i>
+                    </a>
+                  </div>
+                </li>
+            {% endfor %}
+        {% endif %}
+      </ul>
+      <!-- Modal Trigger -->
+      <div class="col s12">
+        <a class="waves-effect waves-light btn modal-trigger right" href="#m_scenario">Add scenario</a>
+      </div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="m_scenario" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <form action="{{ url_for('handle_data') }}" method="post">
+        <div class="row">
+          <div class="row col m6 s12">
+            <h5>Conditions</h5>
+            <div class="input-field col s12" id="modalBody">
+              <div name="just" id="test" class="valign-wrapper">
+                <select name="sss" class="form_control sss" class="col s6">
+                  {% for valName in values.keys() %}
+                  <option value = {{ valName }}> {{ valName }} </option>
+                  {% endfor %}
+                </select>
+                <select name ="operator" id="operator" class="col s2">
+                  <option value="" disabled selected> Operator </option>
+                  <option value="1"> > </option>
+                  <option value="2"> < </option>
+                  <option value="3"> = </option>
+                </select>
+                <div class="col s4">
+                  <input placeholder="Number" name="value" id="Input" type="text" class="validate">
+                </div>
+              </div>
+            </div>
+            <a class="waves-effect waves-light btn right" id="addCondition">Add</a>
+          </div>
+          <div class="row col m6 s12">
+            <h5>Action</h5>
+            <div class="input-field col s12">
+              <select id="actuator" name="actuator" class="col s6">
+                <option value="" disabled selected>Select Actor</option>
+                {% for actuator in actors %}
+                    <option value= {{ loop.index }} >{{ actuator.name }}</option>
+                {% endfor %}
+              </select>
+              <select id="action" name="action" class="col s6">
+                <option value="" disabled selected>Select Action</option>
+                <option value="1">On</option>
+                <option value="2">Off</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <input type="submit">
+        </form>
+        
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+      </div>
+    </div>
+  </div>
+  <!--Import jQuery before materialize.js-->
+  <script>
+    var totalCount = 1;
+    $("#addCondition").click(function () {
+      var html = document.getElementById('test').innerHTML;
+      totalCount ++ ;
+      var resultingHtml = '<div id="test'+totalCount+'" class="valign-wrapper">' + html + '</div>';
+      $('#modalBody').append(resultingHtml);
+      $('select').material_select();
+    });
+
+    // if modal is closed reset innerHTML
+    var clearHTML = document.getElementById('modalBody').innerHTML;
+
+    //this is to redraw the selectors to be drawn correctly
+    $(document).ready(function () {
+      $('select').material_select();
+    });
+    // this is modal code
+    $(document).ready(function () {
+      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        inDuration: 300, // Transition in duration
+        outDuration: 200, // Transition out duration
+        startingTop: '4%', // Starting top style attribute
+        endingTop: '10%', // Ending top style attribute
+        ready: function (modal, trigger) { },// Callback for Modal open. Modal and trigger parameters available.
+        complete: function () {
+          
+          //this should be at the end to clean the model
+          $("#modalBody").html(clearHTML);
+          $('select').material_select();
+        }// Callback for Modal close
+      });
+    });
+
+
+
+  </script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</body>
+
+</html>

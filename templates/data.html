@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+   <title>Data</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<script src="static/js/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8">
+				{% for d in history[::-1] %}
+	    			<p> {{ d }} </p>
+	    		{% endfor %}
+    		</div>
+    		<div class="col-md-4"> 
+    			<div>
+    				<h3>Temperature </h3> 
+    				Average minimal temperature is : {{ avgMinT }} C
+    			</div>
+    			<div>
+    				<h3>Light </h3>
+    				Lights usually turned on at : {{ avgTimeL }}
+    			</div>
+    		</div>
+    	</div>
+    </div>	
+</body>
+</html>

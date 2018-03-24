@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="static/js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+		<div class="col-md-8">
+			<p>
+				Temperature :  {{ temp }}
+			</p>
+
+			<p>
+				Light : {{ light }}
+			</p>
+			<p>
+				Humidity : {{ hum }}
+			</p>
+		</div>
+			<div class="col-md-4">
+				<a id ="tempOn"> 
+					<button type="button" value="testing" class="btn btn-default">
+						Temperature on
+					</button> 
+				</a>
+				<script>
+					tempOn.onclick = function(){
+						var wnd = window.open('http://192.168.1.70/gpio/1');
+						wnd.blur();
+						setTimeout(function(){
+							wnd.close();
+						},1000);
+					};
+				</script>
+				<a id ="tempOff"> 
+					<button type="button" value="testing" class="btn btn-default">
+						Temperature off
+					</button> 
+				</a>
+				<script>
+					tempOff.onclick = function(){
+						var wnd = window.open('http://192.168.1.70/gpio/0');
+						wnd.blur();
+						setTimeout(function(){
+							wnd.close();
+						},1000);
+					};
+				</script>
+				<p id=result></p>
+				<button type="button" class="btn btn-default">
+					Light
+				</button> 
+				<button type="button" class="btn btn-default">
+					Humidity
+				</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

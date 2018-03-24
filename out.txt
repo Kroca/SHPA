@@ -1,0 +1,119 @@
+27-02-2018 18:05 LightControl ON
+ 
+27-02-2018 18:05 LightControl OFF
+ 
+27-02-2018 18:05 LightControl ON
+ 
+27-02-2018 18:05 LightControl OFF
+ 
+27-02-2018 18:05 LightControl ON
+ 
+27-02-2018 18:05 LightControl OFF
+ 
+27-02-2018 18:05 LightControl ON
+ 
+27-02-2018 18:05 LightControl OFF
+ 
+27-02-2018 23:38 LightControl ON
+ 
+27-02-2018 23:49 LightControl ON
+ 
+27-02-2018 23:49 LightControl OFF
+ 
+27-02-2018 23:55 LightControl ON
+ 
+27-02-2018 23:55 LightControl OFF
+ 
+27-02-2018 23:55 LightControl ON
+ 
+27-02-2018 23:55 LightControl OFF
+ 
+27-02-2018 23:55 LightControl ON
+ 
+27-02-2018 23:55 LightControl OFF
+ 
+27-02-2018 23:55 LightControl ON
+ 
+27-02-2018 23:55 LightControl OFF
+ 
+27-02-2018 23:57 LightControl ON
+ 
+27-02-2018 23:57 LightControl TURN_ON
+
+27-02-2018 23:57 LightControl ON
+ 
+27-02-2018 23:57 LightControl TURN_ON
+
+27-02-2018 23:58 LightControl ON
+ 
+27-02-2018 23:58 LightControl OFF
+ 
+27-02-2018 23:58 LightControl ON
+ 
+27-02-2018 23:58 LightControl OFF
+ 
+01-03-2018 13:13 LightControl ON
+ 
+01-03-2018 13:13 LightControl OFF
+ 
+02-03-2018 12:49 LightControl ON
+ 
+02-03-2018 12:49 LightControl OFF
+ 
+02-03-2018 12:49 LightControl ON
+ 
+02-03-2018 12:49 LightControl OFF
+ 
+02-03-2018 12:49 LightControl ON
+ 
+02-03-2018 12:49 LightControl OFF
+ 
+02-03-2018 12:49 LightControl ON
+ 
+02-03-2018 12:49 LightControl OFF
+ 
+04-03-2018 21:28 LightControl ON
+ 
+04-03-2018 21:28 LightControl OFF
+ 
+04-03-2018 21:28 LightControl ON
+ 
+04-03-2018 21:28 LightControl OFF
+ 
+04-03-2018 21:28 LightControl ON
+ 
+04-03-2018 21:28 LightControl OFF
+ 
+10-03-2018 16:12 PresenceAction detected
+10-03-2018 16:13 PresenceAction detected
+10-03-2018 16:18 PresenceAction detected
+10-03-2018 16:20 PresenceAction detected
+10-03-2018 16:20 PresenceAction detected
+10-03-2018 16:20 PresenceAction detected
+10-03-2018 16:20 PresenceAction detected
+10-03-2018 16:20 PresenceAction detected
+10-03-2018 16:24 PresenceAction detected
+10-03-2018 16:24 PresenceAction detected
+10-03-2018 16:34 PresenceAction detected
+10-03-2018 16:35 PresencePresent
+10-03-2018 16:35 PresencePresent
+10-03-2018 16:35 PresencePresent
+10-03-2018 16:35 PresencePresent
+10-03-2018 16:41 PresencePresent
+10-03-2018 16:42 PresencePresent
+10-03-2018 16:43 PresencePresent
+10-03-2018 16:43 PresencePresent
+10-03-2018 16:46 PresencePresent
+10-03-2018 16:46 PresencePresent
+10-03-2018 16:48 PresencePresent
+10-03-2018 16:48 PresencePresent
+10-03-2018 16:48 PresencePresent
+10-03-2018 17:40 PresencePresent
+10-03-2018 17:40 PresencePresent
+10-03-2018 17:40 PresencePresent
+10-03-2018 17:40 LightControl ON
+ 
+10-03-2018 17:40 LightControl OFF
+ 
+10-03-2018 17:42 LightControl ON
+ 
