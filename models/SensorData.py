@@ -15,4 +15,4 @@ class SensorData(Base):
         self.date = date
 
     def __repr__(self):
-        return '<User %r>' % self.sensor_name
+        return '<User %r value %r date %r>' % (self.sensor_name, self.value, self.date)

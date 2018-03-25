@@ -1,3 +1,7 @@
+from DAO.database import db_session
+from models.SensorData import SensorData
+from datetime import datetime
+
 class Singleton(type):
     _instances = {}
 
@@ -25,12 +29,15 @@ class Values(object, metaclass=Singleton):
 
     def setValue(self, valName, val, visibility=True, typeName=""):
         """
-
         :param valName: (String) name of the values by which it going to be searched and shown in system
         :param val: (Generic) actual value of the variable
         :param visibility: (Boolean) specifies if the value is going to be visible on front end along with others(remove?)
         :param typeName: type name of variable
         """
+        # add param to specify if i should write the value to the database??
+        db_session.add(SensorData(valName, val, datetime.now()))
+        db_session.commit()
+        db_session.remove()
         if valName in self._valuesDict.keys():
             self._valuesDict[valName].value = val
         else:

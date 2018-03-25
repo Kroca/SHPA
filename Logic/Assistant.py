@@ -9,7 +9,6 @@ mqttManager.start()
 storage = Storage()
 values = Values()
 
-
 def sendMQTTMessage(topic, message):
     mqttManager.getClient().publish(topic, message)
 

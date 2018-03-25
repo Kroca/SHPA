@@ -2,23 +2,12 @@ from Devices.Device import Device
 from Util.Values import Values
 from Util.HistoryLogger import HistoryLogger
 
-
 class SensingDevice(Device):
     """docstring for SensingDevice"""
 
-    def __init__(self, name, topic, sample_rate):
+    def __init__(self, name, topic):
         super(SensingDevice, self).__init__(name, topic)
-        self.sampleRate = sample_rate
         self.globalValues = Values()
-
-    @property
-    def sampleRate(self):
-        return self.sampleRate
-
-    @sampleRate.setter
-    def sampleRate(self, value):
-        # values in seconds
-        self.sampleRate = value
 
     @property
     def message(self):
@@ -35,8 +24,8 @@ class SensingDevice(Device):
 
 class SensorDHT11(SensingDevice):
 
-    def __init__(self, name, topic, sample_rate):
-        super(SensorDHT11, self).__init__(name, topic, sample_rate)
+    def __init__(self, name, topic):
+        super(SensorDHT11, self).__init__(name, topic)
 
     def parseValues(self):
         tokens = self._message.split(" ")
@@ -46,9 +35,9 @@ class SensorDHT11(SensingDevice):
 
 class PresenceSensor(SensingDevice):
 
-    def __init__(self, name, topic, sample_rate):
+    def __init__(self, name, topic):
         self.logger = HistoryLogger()
-        super(PresenceSensor, self).__init__(name, topic, sample_rate)
+        super(PresenceSensor, self).__init__(name, topic)
 
     def parseValues(self):
         log_msg = ""

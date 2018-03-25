@@ -1,7 +1,6 @@
 import paho.mqtt.client as mqtt
 import Logic.Assistant
 
-
 class MQTTManager(object):
     """MQTT manager for message passing"""
 
@@ -11,7 +10,7 @@ class MQTTManager(object):
     # callback function ? executed when message recieved
     def on_message(self, client, userdata, msg):
         message = msg.payload.decode()
-        for sensor in Logic.Assistant.storage.getSensingDevices():
+        for sensor in Logic.Assistant.getSensors():
             if sensor.topic == msg.topic:
                 sensor.message = message
         return message

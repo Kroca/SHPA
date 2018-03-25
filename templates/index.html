@@ -44,7 +44,7 @@
               </tr>
             </thead>
             <tbody>
-              {% for name, value in sensors.items() %}
+              {% for name, value in assistant.getValues().items() %}
                   {% if value.visible == True %}
                       <tr>
                         <td> {{ name }}</td>
@@ -116,7 +116,7 @@
             <tbody>
               <tr>
                 <td>Presence</td>
-                <td style="text-align: right;">Absent </td>
+                <td style="text-align: right;"> {{ assistant.getValue("Presence").value }} </td>
               </tr>
             </tbody>
           </table>
@@ -128,15 +128,13 @@
 
 
   <script>
-
     {# setup checkboxes according to the current state of the actuators #}
-    var stateVal = '{{ actuators[0].getCurrentState()}}';
+    var stateVal = '{{ assistant.getActor("LightControl").getCurrentState()}}';
     var state = false;
     if (stateVal == '1') {
       state = true;
     }
     document.getElementById("myButton").checked = state;
-
   </script>
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

@@ -2,10 +2,12 @@ from Devices.ActingDevice import BinaryActingDevice
 from Devices.SensingDevice import SensingDevice, SensorDHT11, PresenceSensor
 from Logic.Scenario import Scenario
 from Logic.Condition import Condition, ValueCondition, StateCondition, TimeCondition
+from DAO.database import init_db
 
 
 class Storage(object):
     def __init__(self):
+        init_db()
         self._sensingDevices = []
         self._scenarios = []
         self._actingDevices = []
@@ -21,13 +23,13 @@ class Storage(object):
 
     def tempInintDevice(self):
         # sensors
-        s_light = SensingDevice("Light", "sensorData/light", 60)
+        s_light = SensingDevice("Light", "sensorData/light")
         s_light.message = "230"
 
-        s_dht = SensorDHT11("DHT11", "sensorData/dht11", 60)
+        s_dht = SensorDHT11("DHT11", "sensorData/dht11")
         s_dht.message = "Temperature 30 Humidity 64"
 
-        s_presence = PresenceSensor("Presence", "sensorData/PIR", -1)
+        s_presence = PresenceSensor("Presence", "sensorData/PIR")
         s_presence.message = "1"
 
         # actuator
@@ -53,8 +55,8 @@ class Storage(object):
     def getScenarios(self):
         return self._scenarios
 
-    def addSensingDevice(self, name, topic, refreshRate):
-        self._sensingDevices.append(SensingDevice(name, topic, refreshRate))
+    def addSensingDevice(self, name, topic):
+        self._sensingDevices.append(SensingDevice(name, topic))
 
     def addActingDevice(self, name, topic):
         self._actingDevices.append(BinaryActingDevice(name, topic))
