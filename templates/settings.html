@@ -153,13 +153,10 @@
     });
 </script>
 <script>
+    //todo general scenario
+    //mb using fp
     var stat = '{{ scenarios[0].enabled }}';
-    alert(stat);
-    if(stat == "True") {
-        stat = true;
-    }else {
-        stat = false;
-    }
+    stat = stat == "True";
     document.getElementsByName("LightingScenario")[0].checked = stat;
     alert(stat);
     function edit(name, state) {

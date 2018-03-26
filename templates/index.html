@@ -129,6 +129,7 @@
 
   <script>
     {# setup checkboxes according to the current state of the actuators #}
+    //todo general states
     var stateVal = '{{ assistant.getActor("LightControl").getCurrentState()}}';
     var state = false;
     if (stateVal == '1') {

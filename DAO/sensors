@@ -1,0 +1,5 @@
+[
+{"class_name": "SensingDevice","name":"Light","topic":"sensorData/light"},
+{"class_name": "SensorDHT11","name":"DHT11","topic":"sensorData/dht11"},
+{"class_name": "PresenceSensor","name":"Presence","topic":"sensorData/PIR"}
+]
