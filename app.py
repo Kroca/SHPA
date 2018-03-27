@@ -14,26 +14,16 @@ def main():
     return render_template('index.html', assistant=Assistant)
 
 
-@app.route("/process", methods=['POST'])
-def process():
-    checkbox = request.get_json(force=True)
-    actor = actuators[0]
-    print("button switch state")
-    if checkbox['state']:
-        actor.performAction(actor.possibleActions.TURN_ON)
-    else:
-        actor.performAction(actor.possibleActions.TURN_OFF)
-    print("current state is ")
-    scenarios[0].performScenario()
-    return ""
-
-
-@app.route('/handle_data', methods=['POST'])
-def handle_data():
-    # projectpath = request.form['projectFilepath']
-    result = request.form
-    print("this should not be called")
-    return ""
+@app.route("/performAction", methods=['POST'])
+def performAction():
+    json_req = request.get_json(force=True)
+    try:
+        actor = Assistant.getActor(json_req['actor_name'])
+        action = actor.getAction(json_req['action_name'])
+        actor.performAction(action)
+        return "Success"
+    except:
+        return "Failed to perform the action"
 
 
 @app.route('/toggle_scenario', methods=['POST'])
@@ -47,6 +37,8 @@ def toggle_scenario():
 
 @app.route("/updateSensors")
 def updateSensors():
+    """temporarily used for updating sensor data on front
+    :return json with some sensor data"""
     temp = Assistant.getValue("Temperature").value
     hum = Assistant.getValue("Humidity").value
     light = Assistant.getValue("Light").value
@@ -60,6 +52,7 @@ def settings():
                            scenarios=scenarios,
                            values=sensors,
                            actors=actuators)
+
 
 @app.route("/history")
 def history():

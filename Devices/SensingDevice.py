@@ -48,6 +48,9 @@ class PresenceSensor(SensingDevice):
         self.logger = HistoryLogger()
         super(PresenceSensor, self).__init__(name, topic)
 
+    def initValues(self):
+        self.globalValues.setValue(self.name,"Absent",False)
+
     def parseValues(self):
         log_msg = ""
         if int(self.message) == 1:
