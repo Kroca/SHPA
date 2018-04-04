@@ -1,15 +1,15 @@
-# from DAO.database import init_db
-# from DAO.database import db_session,engine
-# from models.SensorData import SensorData
-# import datetime
-
+from DAO.database import init_db
+from DAO.database import db_session,engine
+from models.SensorData import SensorData
+import datetime
+#
 # init_db()
 # SensorData.__table__.drop(engine)
 # sensor = SensorData("Light","10",datetime.datetime.now())
 # db_session.add(sensor)
 # db_session.commit()
-
-# print(SensorData.query.all())
+#
+print(SensorData.query.filter_by(sensor_name="Light").all())
 # ------------------------------------------------------
 # def get_class(kls):
 #     parts = kls.split('.')
@@ -25,8 +25,8 @@
 # -------------------------------------------------------
 # sensor = SensingDevice("Light", "sensorData/light")
 from Devices.SensingDevice import SensingDevice,PresenceSensor
-import json
-
-data = json.load(open("DAO/scenarios"))
-print(data[0]['conditions'][0].items())
+# import json
+#
+# data = json.load(open("DAO/scenarios"))
+# print(data[0]['conditions'][0].items())
 

@@ -54,6 +54,12 @@ def settings():
                            actors=actuators)
 
 
+@app.route('/reload', methods=['POST'])
+def reload():
+    Assistant.storage.reload()
+    return ""
+
+
 @app.route("/history")
 def history():
     print("Showing history")

@@ -39,6 +39,12 @@ class Storage(object):
                 sc.addCondition(t_c)
             self._scenarios.append(sc)
 
+    def reload(self):
+        self._scenarios = []
+        self._sensingDevices = []
+        self._actingDevices = []
+        self.load()
+
     def get_class(self, kls):
         parts = kls.split('.')
         module = ".".join(parts[:-1])
@@ -46,35 +52,6 @@ class Storage(object):
         for comp in parts[1:]:
             m = getattr(m, comp)
         return m
-
-    # def tempInintDevice(self):
-        # sensors
-        # s_light = SensingDevice("Light", "sensorData/light")
-        # s_light.message = "230"
-        #
-        # s_dht = SensorDHT11("DHT11", "sensorData/dht11")
-        # s_dht.message = "Temperature 30 Humidity 64"
-        #
-        # s_presence = PresenceSensor("Presence", "sensorData/PIR")
-        # s_presence.message = "1"
-        #
-        # # actuator
-        # a_light = BinaryActingDevice("LightControl", "actuators/light")
-        #
-        # # scenarios
-        # light_scenario = Scenario("LightingScenario", "Turn on the light at dark if someone is in room")
-        # light_scenario.addAction(a_light, a_light.Actions.TURN_ON)
-        # light_scenario.addCondition(TimeCondition("23:00", "<"))
-        # light_scenario.addCondition(ValueCondition("Light", ">", 200))
-        # # todo check this on raspberry settings
-        # light_scenario.addCondition(ValueCondition("Presence", "=", 0))
-        #
-        # # append
-        # self._sensingDevices.append(s_light)
-        # self._sensingDevices.append(s_dht)
-        # self._actingDevices.append(a_light)
-        # self._sensingDevices.append(s_presence)
-        # self._scenarios.append(light_scenario)
 
     def getScenarios(self):
         return self._scenarios
