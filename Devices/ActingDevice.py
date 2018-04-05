@@ -47,3 +47,6 @@ class BinaryActingDevice(Device, Actor):
             self.currentState = newState
             info = self.name + " " + newState.name + "\n "
             Logic.Assistant.logger.log(info)
+
+    def is_possible(self,action):
+        return action in self.state_transactions[self.currentState]

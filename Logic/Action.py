@@ -10,3 +10,5 @@ class Action(object):
     def perform(self):
         self.actor.performAction(self.action)
         self.logger.log(self.actor.name + " " + self.action.name + "\n")
+    def possible(self):
+        self.actor

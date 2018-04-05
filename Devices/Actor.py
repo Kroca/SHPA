@@ -64,3 +64,6 @@ class Actor(object):
     def getPossibleStatesList(self):
         return NotImplementedError
 
+    @abstractmethod
+    def is_possible(self,action):
+        return NotImplementedError

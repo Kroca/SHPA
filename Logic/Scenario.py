@@ -11,9 +11,6 @@ class Scenario(object):
         self.description = description
         self._conditions = []
         self.name = name
-        # mark that system is already activated scenario, and there is no need to do it again
-        # (when after this actions scenario is still true )
-        self.active = False
         # mark if we want to check this scenario or we turned off for some time
         self.enabled = True
 
@@ -34,7 +31,9 @@ class Scenario(object):
     def checkConditionsSatisfaction(self):
         for condition in self._conditions:
             if not condition.isSatisfied():
-                print(condition)
+                return False
+        for action in self._actionSet:
+            if not action.is_possible():
                 return False
         return True
 
@@ -43,9 +42,5 @@ class Scenario(object):
             return
         print("scenario is" + str(self.checkConditionsSatisfaction()))
         if self.checkConditionsSatisfaction():
-            if not self.active:
-                for action in self._actionSet:
-                    action.perform()
-                self.active = True
-        else:
-            self.active = False
+            for action in self._actionSet:
+                action.perform()
