@@ -2,18 +2,18 @@ $(document).ready(function () {
     $("#myButton").on('click', function () {
         var checkedValue = document.getElementById('myButton');
         var action = "";
-        var actor = "Light";
-        if (checkedValue){
-            action = "turn_on"
+        var actor = "LightControl";
+        if (checkedValue.checked){
+            action = "TURN_ON"
         }else {
-            action = "turn_off"
+            action = "TURN_OFF"
         }
         $.ajax({
             data: JSON.stringify({ actor_name : actor, action_name:action}),
             type: 'POST',
             url : "/performAction"
         }).done(function(data){
-            // code
+         
         });   
     });
 });

@@ -17,9 +17,12 @@ def main():
 @app.route("/performAction", methods=['POST'])
 def performAction():
     json_req = request.get_json(force=True)
+    print(json_req['actor_name'])
     try:
         actor = Assistant.getActor(json_req['actor_name'])
         action = actor.getAction(json_req['action_name'])
+        print(actor)
+        print(action)
         actor.performAction(action)
         return "Success"
     except:

@@ -1,12 +1,13 @@
 [
 {
 	"name":"LightScenario","description":"Turn on the light at dark if someone is in room",
-	"actions":[{"actor":"LightControl","action":"turn_on"}],
+	"actions":[{"actor":"LightControl","action":"TURN_ON"}],
 	"conditions":
 	    [
-	        {"type":"TimeCondition","time":"23:00","operator":"<"},
-	        {"type":"ValueCondition","valueName":"Light","operator":">","compareValue":200},
-	        {"type":"ValueCondition","valueName":"Presence","operator":"=","compareValue":0}
+	        {"type":"TimeCondition","time":"23:00","operator":">"},
+		{"type":"TimeCondition","time":"11:00","operator":"<"},
+	        {"type":"ValueCondition","valueName":"Light","operator":">","compareValue":900},
+	        {"type":"ValueCondition","valueName":"Presence","operator":"=","compareValue":"Present"}
 	    ]
 }
 ]
