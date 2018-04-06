@@ -476,3 +476,9 @@
  
 06-04-2018 15:18 PresencePresent
 06-04-2018 15:24 PresenceAbsent
+06-04-2018 18:12 LightControl ON
+ 
+06-04-2018 18:15 Music Player action Play 
+
+06-04-2018 18:16 Music Player action Pause 
+

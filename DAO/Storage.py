@@ -1,6 +1,7 @@
 from Logic.Scenario import Scenario
 from Devices.ActingDevice import BinaryActingDevice
 from DAO.database import init_db
+from Devices.MusicActor import MusicPlayer
 import json
 
 
@@ -26,6 +27,7 @@ class Storage(object):
             cls = self.get_class("Devices.ActingDevice." + actor['class_name'])
             self._actingDevices.append(cls(actor['name'],actor['topic']))
 
+        self._actingDevices.append(MusicPlayer())
         scenarios = json.load(open("DAO/scenarios"))
         for scenario in scenarios:
             sc = Scenario(scenario['name'],scenario['description'])

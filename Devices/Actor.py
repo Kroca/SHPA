@@ -14,8 +14,9 @@ class Actor(object):
         return NotImplementedError
 
     def getAction(self,action_name):
-        return NotImplementedError
-
+        for action in self.possibleActions:
+            if action.name == action_name:
+                return action
     @property
     @abstractmethod
     def possibleActions(self):

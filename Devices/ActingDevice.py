@@ -28,11 +28,6 @@ class BinaryActingDevice(Device, Actor):
     def getCurrentState(self):
         return self.currentState.value
 
-    def getAction(self, action_name):
-        for action in self.possibleActions:
-            if action.name == action_name:
-                return action
-
     def getName(self):
         return self.name
 

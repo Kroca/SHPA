@@ -20,9 +20,9 @@ def performAction():
     print(json_req['actor_name'])
     try:
         actor = Assistant.getActor(json_req['actor_name'])
-        action = actor.getAction(json_req['action_name'])
         print(actor)
-        print(action)
+        action = actor.getAction(json_req['action_name'])
+        print("action" ,action)
         actor.performAction(action)
         return "Success"
     except:
