@@ -4,7 +4,7 @@ from clementineremote import ClementineRemote
 import Logic.Assistant
 
 class MusicPlayer(Actor):
-
+    """Example of software actor"""
     def __init__(self):
         self.name = "Music Player"
         super().__init__()
@@ -12,7 +12,11 @@ class MusicPlayer(Actor):
         self.possibleStates = self.States
         self.currentState = self.States.STOPPED
         self.state_transactions = {}
-        self.clementine = ClementineRemote(host="localhost", port=5500, auth_code=None)
+        try:
+            self.clementine = ClementineRemote(host="localhost", port=5500, auth_code=None)
+        except:
+            Logic.Assistant.logger.log("couldn't connect to Clementine")
+
 
         
     def getName(self):
@@ -31,7 +35,7 @@ class MusicPlayer(Actor):
             self.currentState = self.States.PLAYING
 
         if action == self.Actions.PREVIOUS:
-            self.clementine.prev()
+            self.clementine.previous()
             self.currentState = self.States.PLAYING
 
         if action == self.Actions.STOP:
@@ -41,7 +45,7 @@ class MusicPlayer(Actor):
         if action == self.Actions.PAUSE:
             self.clementine.pause()
             self.currentState = self.States.STOPPED
-
+        # not implemented on front yet
         if action == self.Actions.SET_VOLUME:
             self.clementine.set_volume(args[0]['volume'])
 
@@ -70,4 +74,3 @@ class MusicPlayer(Actor):
     def is_connected(self):
         return self.clementine.first_data_sent_complete
 
-    

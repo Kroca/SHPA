@@ -7,7 +7,7 @@ class MQTTManager(object):
     def __init__(self):
         super(MQTTManager, self).__init__()
 
-    # callback function ? executed when message recieved
+    # callback function that is executed when message received
     def on_message(self, client, userdata, msg):
         message = msg.payload.decode()
         for sensor in Logic.Assistant.getSensors():

@@ -9,7 +9,7 @@ class SensorData(Base):
     value = Column(String(50), unique=False)
     date = Column(Date, unique=False)
 
-    def __init__(self, name=None, value=None,date = None):
+    def __init__(self, name=None, value=None, date=None):
         self.sensor_name = name
         self.value = value
         self.date = date

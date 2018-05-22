@@ -5,15 +5,14 @@ import Logic.Assistant
 
 
 class BinaryActingDevice(Device, Actor):
+    """Class represents acting device with two states on/off"""
     class Actions(Enum):
-        TURN_ON = "Turn on"
-        TURN_OFF = "Turn off"
+        TURN_ON = "is turned on"
+        TURN_OFF = "is turned off"
 
     class States(Enum):
         ON = 1
         OFF = 0
-
-    """docstring for ActingDevice"""
 
     def __init__(self, name, topic):
         Device.__init__(self, name, topic)
@@ -22,6 +21,7 @@ class BinaryActingDevice(Device, Actor):
         self.possibleStates = self.States
         self.currentState = self.States.OFF
         # set of possible transactions that can be performed
+        # mb replace with less strict version later.
         self.state_transactions = {self.possibleStates.ON: {self.possibleActions.TURN_OFF: self.possibleStates.OFF},
                                    self.possibleStates.OFF: {self.possibleActions.TURN_ON: self.possibleStates.ON}}
 
@@ -36,7 +36,6 @@ class BinaryActingDevice(Device, Actor):
 
     def performAction(self, action, *args):
         if action in self.state_transactions[self.currentState]:  # if following action is possible then
-            # send mqtt request to device and wait for callback possible even send some params from *param
             newState = self.state_transactions[self.currentState][action]
             Logic.Assistant.sendMQTTMessage(self.topic, newState.value)
             self.currentState = newState

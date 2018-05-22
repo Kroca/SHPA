@@ -2,7 +2,7 @@ from abc import ABCMeta, abstractmethod, abstractproperty
 
 
 class Actor(object):
-    """Abstract class for any actor in a system"""
+    """Abstract class for any actor in a system, each actor has a set of possible actions and states"""
     __metaclass__ = ABCMeta
 
     def __init__(self):
@@ -13,10 +13,13 @@ class Actor(object):
     def getName(self):
         return NotImplementedError
 
-    def getAction(self,action_name):
+    def getAction(self, action_name):
+        """searches for action by its name
+        :return action instance"""
         for action in self.possibleActions:
             if action.name == action_name:
                 return action
+
     @property
     @abstractmethod
     def possibleActions(self):
@@ -59,12 +62,11 @@ class Actor(object):
 
     @abstractmethod
     def performAction(self, action, *args):
+        """method that should be implemented by every actor class
+        :param action:  action that should be performed
+        :param *args : set of additional parameters"""
         return NotImplementedError
 
     @abstractmethod
     def getPossibleStatesList(self):
-        return NotImplementedError
-
-    @abstractmethod
-    def is_possible(self,action):
         return NotImplementedError

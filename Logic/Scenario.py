@@ -31,12 +31,7 @@ class Scenario(object):
     def checkConditionsSatisfaction(self):
         for condition in self._conditions:
             if not condition.isSatisfied():
-                print("following condition is false",condition)
                 return False
-##        for action in self._actionSet:
-##            if not action.is_possible():
-##                print("following action is false",action)
-##                return False
         return True
 
     def performScenario(self):

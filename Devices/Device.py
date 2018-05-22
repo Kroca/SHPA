@@ -2,7 +2,9 @@ from abc import ABCMeta, abstractmethod, abstractproperty
 
 
 class Device(object):
-    """Abstract class for any device in a system"""
+    """Abstract class for any device in a system, must have a name and topic to which actual device publishes
+    messages """
+
     __metaclass__ = ABCMeta
 
     def __init__(self, name, topic):

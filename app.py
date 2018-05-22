@@ -20,13 +20,14 @@ def performAction():
     print(json_req['actor_name'])
     try:
         actor = Assistant.getActor(json_req['actor_name'])
-        print(actor)
-        action = actor.getAction(json_req['action_name'])
-        print("action" ,action)
-        actor.performAction(action)
-        return "Success"
+        action = actor.getAction(str.upper(json_req['action_name']))
+        actor.performAction(action, json_req)
+        map = {"answer": {"message_key": "{}".format(json_req['action_name']),
+                          "message": "{} {}".format(json_req['actor_name'], action.value)}}
+        return jsonify(map)
     except:
-        return "Failed to perform the action"
+        map = {"error": {"message_key": "turn_on"}, "message": "error occurred"}
+        return jsonify(map)
 
 
 @app.route('/toggle_scenario', methods=['POST'])
@@ -36,6 +37,16 @@ def toggle_scenario():
     scenario_to_edit.toggle(json_req['state'])
     print(scenario_to_edit.enabled)
     return ""
+
+
+@app.route("/getSensorsData", methods=['POST'])
+def getSensorData():
+    temp = Assistant.getValue("Temperature").value
+    hum = Assistant.getValue("Humidity").value
+    light = Assistant.getValue("Light").value
+    map = {"answer": {"message_key": "dashboard",
+                      "message": "Temperature {}, Humidity {}, Light {}".format(temp, hum, light)}}
+    return jsonify(map)
 
 
 @app.route("/updateSensors")

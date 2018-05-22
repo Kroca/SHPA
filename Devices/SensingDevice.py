@@ -4,7 +4,7 @@ from Util.HistoryLogger import HistoryLogger
 
 
 class SensingDevice(Device):
-    """docstring for SensingDevice"""
+    """Sensor class for device with singular integer value"""
 
     def __init__(self, name, topic):
         super(SensingDevice, self).__init__(name, topic)
@@ -12,7 +12,8 @@ class SensingDevice(Device):
         self.initValues()
 
     def initValues(self):
-        self.globalValues.setValue(self.name, 0)
+        """setup initial values for placeholder"""
+        self.globalValues.setValue(self.name, 300)
 
     @property
     def message(self):
@@ -24,11 +25,12 @@ class SensingDevice(Device):
         self.parseValues()
 
     def parseValues(self):
+        """parsing message received from actual sensor"""
         self.globalValues.setValue(self.name, float(self.message))
 
 
 class SensorDHT11(SensingDevice):
-
+    """Sensor class for DHT11"""
     def __init__(self, name, topic):
         super(SensorDHT11, self).__init__(name, topic)
 
@@ -38,12 +40,12 @@ class SensorDHT11(SensingDevice):
         self.globalValues.setValue(tokens[2], tokens[3])
 
     def initValues(self):
-        self.globalValues.setValue("Temperature",0)
-        self.globalValues.setValue("Humidity",0)
+        self.globalValues.setValue("Temperature",22)
+        self.globalValues.setValue("Humidity",40)
 
 
 class PresenceSensor(SensingDevice):
-
+    """Sensor class for Presence sensors"""
     def __init__(self, name, topic):
         self.logger = HistoryLogger()
         super(PresenceSensor, self).__init__(name, topic)
