@@ -6,10 +6,11 @@ from Util.HistoryLogger import HistoryLogger
 class SensingDevice(Device):
     """Sensor class for device with singular integer value"""
 
-    def __init__(self, name, topic):
-        super(SensingDevice, self).__init__(name, topic)
+    def __init__(self, sensorInfo):
+        super(SensingDevice, self).__init__(sensorInfo['name'], sensorInfo['topic'])
         self.globalValues = Values()
         self.initValues()
+
 
     def initValues(self):
         """setup initial values for placeholder"""
@@ -31,8 +32,8 @@ class SensingDevice(Device):
 
 class SensorDHT11(SensingDevice):
     """Sensor class for DHT11"""
-    def __init__(self, name, topic):
-        super(SensorDHT11, self).__init__(name, topic)
+    def __init__(self, sensorInfo):
+        super(SensorDHT11, self).__init__(sensorInfo)
 
     def parseValues(self):
         tokens = self._message.split(" ")
@@ -46,9 +47,9 @@ class SensorDHT11(SensingDevice):
 
 class PresenceSensor(SensingDevice):
     """Sensor class for Presence sensors"""
-    def __init__(self, name, topic):
+    def __init__(self, sensorInfo):
         self.logger = HistoryLogger()
-        super(PresenceSensor, self).__init__(name, topic)
+        super(PresenceSensor, self).__init__(sensorInfo)
 
     def initValues(self):
         self.globalValues.setValue(self.name,"Absent",False)

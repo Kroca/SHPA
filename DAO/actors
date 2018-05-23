@@ -1,3 +1,4 @@
 [
-{"class_name":"BinaryActingDevice","name":"LightControl","topic":"actuators/light"}
+{"class_name":"Devices.ActingDevice.BinaryActingDevice","name":"LightControl","topic":"actuators/light"},
+{"class_name":"Devices.MusicActor.MusicPlayer","ip":"localhost"}
 ]

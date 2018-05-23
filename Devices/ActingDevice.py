@@ -14,8 +14,8 @@ class BinaryActingDevice(Device, Actor):
         ON = 1
         OFF = 0
 
-    def __init__(self, name, topic):
-        Device.__init__(self, name, topic)
+    def __init__(self, actorInfo):
+        Device.__init__(self, actorInfo['name'], actorInfo['topic'])
         Actor.__init__(self)
         self.possibleActions = self.Actions
         self.possibleStates = self.States

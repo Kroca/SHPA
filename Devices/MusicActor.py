@@ -3,9 +3,11 @@ from enum import Enum
 from clementineremote import ClementineRemote
 import Logic.Assistant
 
+
 class MusicPlayer(Actor):
     """Example of software actor"""
-    def __init__(self):
+
+    def __init__(self,actorInfo):
         self.name = "Music Player"
         super().__init__()
         self.possibleActions = self.Actions
@@ -13,12 +15,10 @@ class MusicPlayer(Actor):
         self.currentState = self.States.STOPPED
         self.state_transactions = {}
         try:
-            self.clementine = ClementineRemote(host="localhost", port=5500, auth_code=None)
+            self.clementine = ClementineRemote(host=actorInfo['ip'], port=5500, auth_code=None)
         except:
             Logic.Assistant.logger.log("couldn't connect to Clementine")
 
-
-        
     def getName(self):
         return self.name
 
@@ -49,9 +49,8 @@ class MusicPlayer(Actor):
         if action == self.Actions.SET_VOLUME:
             self.clementine.set_volume(args[0]['volume'])
 
-        info = self.name + " action " + action.value +" \n"
+        info = self.name + " action " + action.value + " \n"
         Logic.Assistant.logger.log(info)
-
 
     def getPossibleStatesList(self):
         pass
@@ -73,4 +72,3 @@ class MusicPlayer(Actor):
 
     def is_connected(self):
         return self.clementine.first_data_sent_complete
-

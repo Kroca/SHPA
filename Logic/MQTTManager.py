@@ -17,6 +17,7 @@ class MQTTManager(object):
 
     def start(self):
         self.mqttc = mqtt.Client()
+        # address to mqtt broker
         self.mqttc.connect("localhost", 1883, 60)
         self.mqttc.subscribe("sensorData/#")
         self.mqttc.on_message = self.on_message

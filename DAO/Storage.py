@@ -14,20 +14,20 @@ class Storage(object):
         self.load()
 
     def load(self):
-        # deserialize
         # getting sensor data
         sensors = json.load(open("DAO/sensors"))
         for sensor in sensors:
             cls = self.get_class("Devices.SensingDevice." + sensor['class_name'])
-            self._sensingDevices.append(cls(sensor['name'], sensor['topic']))
+            self._sensingDevices.append(cls(sensor))
 
         # getting actor data
         actors = json.load(open("DAO/actors"))
         for actor in actors:
-            cls = self.get_class("Devices.ActingDevice." + actor['class_name'])
-            self._actingDevices.append(cls(actor['name'],actor['topic']))
+            cls = self.get_class(actor['class_name'])
+            self._actingDevices.append(cls(actor))
 
-        self._actingDevices.append(MusicPlayer())
+        # todo cleanup for scenarios
+        # self._actingDevices.append(MusicPlayer())
         scenarios = json.load(open("DAO/scenarios"))
         for scenario in scenarios:
             sc = Scenario(scenario['name'],scenario['description'])
