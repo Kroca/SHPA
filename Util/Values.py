@@ -35,9 +35,9 @@ class Values(object, metaclass=Singleton):
         :param typeName: type name of variable
         """
         # add param to specify if i should write the value to the database??
-        db_session.add(SensorData(valName, val, datetime.now()))
-        db_session.commit()
-        db_session.remove()
+        # db_session.add(SensorData(valName, val, datetime.now()))
+        # db_session.commit()
+        # db_session.remove()
         if valName in self._valuesDict.keys():
             self._valuesDict[valName].value = val
         else:

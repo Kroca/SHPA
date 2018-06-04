@@ -7,7 +7,7 @@ import json
 
 class Storage(object):
     def __init__(self):
-        init_db()
+        # init_db()
         self._sensingDevices = []
         self._scenarios = []
         self._actingDevices = []
