@@ -20,9 +20,9 @@ $(document).ready(function () {
 
 function updateSensorValues(){
     $.getJSON("/updateSensors",function(data){
-        $("#Humidity").text(data.hum);
-        $("#Light").text(data.light);
-        $("#Temperature").text(data.temp);
+        for(var d in data){
+            $("#"+d).text(data[d]);
+        }
     });
 }
 updateSensorValues();

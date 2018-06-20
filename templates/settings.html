@@ -39,21 +39,31 @@
             <li class="collection-header">
                 <h4>Scenarios</h4>
             </li>
-            {% if scenarios|length == 0 %}
-                <li class="collection-item">No scenarios present</li>
-            {% else %}
-                {% for scenario in scenarios %}
-                    <li class="collection-item">
-                        <div> {{ scenario.description }}
-                            <p class="secondary-content">
-                                <input name='{{ scenario.name }}' type="checkbox" class="filled-in" id="filled-in-box"
-                                       onclick="edit(name,checked)"/>
-                                <label for="filled-in-box"></label>
-                            </p>
-                        </div>
-                    </li>
-                {% endfor %}
-            {% endif %}
+            <li class="collection-item">
+                <div> sometext
+                    <p class="secondary-content">
+                        <label for="filled-in-box">
+                        <input name='somename' type="checkbox" class="filled-in" id="filled-in-box"
+                               onclick="edit(name,checked)"/>
+                        </label>
+                    </p>
+                </div>
+            </li>
+{#            {% if scenarios|length == 0 %}#}
+{#                <li class="collection-item">No scenarios present</li>#}
+{#            {% else %}#}
+{#                {% for scenario in scenarios %}#}
+{#                    <li class="collection-item">#}
+{#                        <div> {{ scenario.description }}#}
+{#                            <p class="secondary-content">#}
+{#                                <input name='{{ scenario.name }}' type="checkbox" class="filled-in" id="filled-in-box"#}
+{#                                       onclick="edit(name,checked)"/>#}
+{#                                <label for="filled-in-box"></label>#}
+{#                            </p>#}
+{#                        </div>#}
+{#                    </li>#}
+{#                {% endfor %}#}
+{#            {% endif %}#}
         </ul>
     </div>
 </div>

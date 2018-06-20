@@ -53,10 +53,11 @@ def getSensorData():
 def updateSensors():
     """temporarily used for updating sensor data on front
     :return json with some sensor data"""
-    temp = Assistant.getValue("Temperature").value
-    hum = Assistant.getValue("Humidity").value
-    light = Assistant.getValue("Light").value
-    return jsonify(temp=temp, hum=hum, light=light)
+    data = {}
+    for a in sensors:
+        data[a]=Assistant.getValue(a).value
+    return jsonify(data)
+    # return jsonify(temp=temp, hum=hum, light=light)
 
 
 @app.route('/settings')
